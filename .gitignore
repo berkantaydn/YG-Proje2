@@ -1,0 +1,12 @@
+# Gerçek şifreler asla commit'lenmez
+.env
+
+# İşletim sistemi / editör dosyaları
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Geçici dosyalar
+*.log
+*.tmp
