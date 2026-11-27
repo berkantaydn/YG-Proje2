@@ -1,10 +1,19 @@
 -- =====================================================================
--- Staj ve Sektör Yetkinlik Haritası — ŞEMA TASLAĞI (Hafta 1)
+-- Staj ve Sektör Yetkinlik Haritası — VERİTABANI ŞEMASI v1 (Hafta 2)
+-- Görev: P2-06 (şema tasarımı) ve P2-08 (schema.sql)
 -- MySQL 8 ve XAMPP (MariaDB) ile uyumludur.
--- Bu dosya TASLAKTIR: ER diyagramı v1 ve veri sözlüğü netleşince
--- Hafta 2'de (P2-06, P2-08) kesin sürüm yazılacaktır.
--- Tekrar tekrar çalıştırılabilir (DROP TABLE IF EXISTS kullanır).
+--
+-- Kullanım: phpMyAdmin > İçe Aktar (veritabanı seçmeden) > bu dosya.
+-- Önce schema.sql, sonra seed.sql çalıştırılır.
+--
+-- UYARI: Dosya tabloları DROP eder. Tekrar çalıştırmak içlerindeki
+-- tüm verileri siler; ardından seed.sql yeniden çalıştırılmalıdır.
+--
+-- Tablo ve alan adları Hafta 1 taslağıyla (schema-taslak.sql) aynıdır;
+-- veri sözlüğü ve ER diyagramı bu şemayla birebir uyumludur.
 -- =====================================================================
+
+SET NAMES utf8mb4;
 
 CREATE DATABASE IF NOT EXISTS staj_yetkinlik
     CHARACTER SET utf8mb4
@@ -12,6 +21,7 @@ CREATE DATABASE IF NOT EXISTS staj_yetkinlik
 
 USE staj_yetkinlik;
 
+-- Bağımlı tablolar önce silinir
 DROP TABLE IF EXISTS staj_yetkinlik;
 DROP TABLE IF EXISTS ogrenci_yetkinlik;
 DROP TABLE IF EXISTS staj;
@@ -20,7 +30,9 @@ DROP TABLE IF EXISTS ogrenci;
 DROP TABLE IF EXISTS yetkinlik;
 DROP TABLE IF EXISTS sektor;
 
+-- ---------------------------------------------------------------------
 -- SEKTOR: Firmaların ait olduğu sektörler (ör. Yazılım, Finans)
+-- ---------------------------------------------------------------------
 CREATE TABLE sektor (
     sektor_id  INT UNSIGNED  NOT NULL AUTO_INCREMENT,
     ad         VARCHAR(100)  NOT NULL,
@@ -29,7 +41,9 @@ CREATE TABLE sektor (
     UNIQUE KEY uq_sektor_ad (ad)
 ) ENGINE=InnoDB;
 
+-- ---------------------------------------------------------------------
 -- YETKINLIK: Yetkinlik / teknoloji sözlüğü (ör. SQL, PHP, Takım Çalışması)
+-- ---------------------------------------------------------------------
 CREATE TABLE yetkinlik (
     yetkinlik_id INT UNSIGNED  NOT NULL AUTO_INCREMENT,
     ad           VARCHAR(100)  NOT NULL,
@@ -39,7 +53,9 @@ CREATE TABLE yetkinlik (
     UNIQUE KEY uq_yetkinlik_ad (ad)
 ) ENGINE=InnoDB;
 
+-- ---------------------------------------------------------------------
 -- OGRENCI: Öğrenci profili (veriler sentetik/anonim olmalıdır)
+-- ---------------------------------------------------------------------
 CREATE TABLE ogrenci (
     ogrenci_id  INT UNSIGNED     NOT NULL AUTO_INCREMENT,
     ogrenci_no  VARCHAR(20)      NOT NULL,
@@ -54,7 +70,10 @@ CREATE TABLE ogrenci (
     CONSTRAINT ck_ogrenci_sinif CHECK (sinif IS NULL OR sinif BETWEEN 1 AND 6)
 ) ENGINE=InnoDB;
 
+-- ---------------------------------------------------------------------
 -- FIRMA: Staj veren firmalar; her firma bir sektöre bağlıdır
+--   Sektör silinmek istenirse ve bağlı firma varsa RESTRICT engeller.
+-- ---------------------------------------------------------------------
 CREATE TABLE firma (
     firma_id   INT UNSIGNED  NOT NULL AUTO_INCREMENT,
     ad         VARCHAR(150)  NOT NULL,
@@ -68,7 +87,10 @@ CREATE TABLE firma (
         ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
+-- ---------------------------------------------------------------------
 -- STAJ: Firmanın açtığı staj fırsatı / pozisyon
+--   Firma silinirse bağlı stajları da silinir (CASCADE).
+-- ---------------------------------------------------------------------
 CREATE TABLE staj (
     staj_id          INT UNSIGNED  NOT NULL AUTO_INCREMENT,
     firma_id         INT UNSIGNED  NOT NULL,
@@ -88,7 +110,9 @@ CREATE TABLE staj (
         OR bitis_tarihi >= baslangic_tarihi)
 ) ENGINE=InnoDB;
 
+-- ---------------------------------------------------------------------
 -- OGRENCI_YETKINLIK: Öğrenci <-> Yetkinlik (çoktan çoğa), düzey 1-5
+-- ---------------------------------------------------------------------
 CREATE TABLE ogrenci_yetkinlik (
     ogrenci_id   INT UNSIGNED     NOT NULL,
     yetkinlik_id INT UNSIGNED     NOT NULL,
@@ -103,7 +127,9 @@ CREATE TABLE ogrenci_yetkinlik (
     CONSTRAINT ck_oy_duzey CHECK (duzey BETWEEN 1 AND 5)
 ) ENGINE=InnoDB;
 
+-- ---------------------------------------------------------------------
 -- STAJ_YETKINLIK: Staj <-> Yetkinlik (çoktan çoğa), beklenen minimum düzey 1-5
+-- ---------------------------------------------------------------------
 CREATE TABLE staj_yetkinlik (
     staj_id      INT UNSIGNED     NOT NULL,
     yetkinlik_id INT UNSIGNED     NOT NULL,
