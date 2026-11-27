@@ -34,5 +34,9 @@ function db(): PDO
         PDO::ATTR_EMULATE_PREPARES   => false,
     ]);
 
+    // XAMPP'ın varsayılanında katı mod kapalıdır; bu durumda MariaDB hatalı veriyi
+    // reddetmek yerine sessizce değiştirip kaydedebilir. Oturum için katı modu açıyoruz.
+    $pdo->exec("SET SESSION sql_mode = 'STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION'");
+
     return $pdo;
 }
