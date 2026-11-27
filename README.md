@@ -15,6 +15,7 @@
 - [Kurulum](#kurulum)
 - [Veritabanı özeti](#veritabanı-özeti)
 - [ER diyagramı](#er-diyagramı)
+- [Örnek veri](#örnek-veri)
 - [Belgeler](#belgeler)
 - [Çalışma kuralları](#çalışma-kuralları)
 
@@ -66,8 +67,15 @@ Seçimlerin gerekçesi için: [docs/teknoloji-karari.md](docs/teknoloji-karari.m
 
 ```
 .
-├── docs/                    Belgeler (gereksinimler, veri sözlüğü, ER, test planı...)
-│   └── teknoloji-karari.md
+├── docs/
+│   ├── teknoloji-karari.md      Teknoloji seçimi ve çalışma kuralları
+│   ├── kullanici-senaryolari.md Personalar, kullanıcı hikâyeleri, senaryolar
+│   ├── gereksinimler.md         Fonksiyonel / fonksiyonel olmayan gereksinimler
+│   ├── veri-sozlugu.md          Tablolar, alanlar, kısıtlar
+│   ├── test-plani.md            Test planı ve test senaryoları
+│   └── er/
+│       ├── er-diyagrami-v1.md           ER açıklaması + mantıksal ER (Mermaid)
+│       └── er-kavramsal-chen.drawio.svg Kavramsal ER (Chen) görseli
 ├── sql/
 │   └── schema-taslak.sql    Veritabanı şeması (taslak, Hafta 2'de kesinleşecek)
 ├── src/
@@ -76,7 +84,8 @@ Seçimlerin gerekçesi için: [docs/teknoloji-karari.md](docs/teknoloji-karari.m
 ├── public/                  Tarayıcıdan erişilen sayfalar
 │   ├── index.php            Ana sayfa
 │   └── baglanti-testi.php   Veritabanı bağlantı testi
-├── data/                    Sentetik örnek veri taslakları
+├── data/
+│   └── seed-taslak/         Sentetik örnek veri (tablo başına bir CSV)
 ├── .env.example             Ayar şablonu
 └── .gitignore
 ```
@@ -177,17 +186,31 @@ Veri bütünlüğü kısıtlardan bazıları:
 
 ## ER diyagramı
 
-> ER diyagramı v1 hazırlanıyor (issue #1). Tamamlandığında görseli `docs/er/` altına eklenecek ve burada gösterilecektir.
+Kavramsal ER diyagramı (Chen gösterimi):
+
+![Kavramsal ER diyagramı](docs/er/er-kavramsal-chen.drawio.svg)
+
+Tablo, anahtar ve kardinalite düzeyindeki **mantıksal ER diyagramı** (kaz ayağı gösterimi), iki diyagram arasındaki dönüşüm kuralları ve anahtar adayları için: [docs/er/er-diyagrami-v1.md](docs/er/er-diyagrami-v1.md)
+
+## Örnek veri
+
+`data/seed-taslak/` klasöründe her tablo için bir CSV dosyası vardır: 4 sektör, 12 yetkinlik, 9 öğrenci, 6 firma ve 8 staj. Tüm kayıtlar sentetiktir; gerçek kişi veya firma verisi içermez. Veri, kullanıcı senaryolarındaki yetkinlik boşluğu örneğini (KS-03) ve raporları gösterebilecek şekilde tasarlanmıştır.
+
+phpMyAdmin ile yükleme sırası ve verinin hangi durumları test ettiği: [data/seed-taslak/README.md](data/seed-taslak/README.md)
+
+> Kesin `seed.sql` dosyası P2-08 kapsamında hazırlanacaktır.
 
 ## Belgeler
 
-| Belge | Durum |
-|---|---|
-| [Teknoloji kararı](docs/teknoloji-karari.md) | Hazır |
-| Kullanıcı senaryoları ve FR/NFR listesi | Hazırlanıyor (#2) |
-| Veri sözlüğü | Hazırlanıyor (#2) |
-| ER diyagramı | Hazırlanıyor (#1) |
-| Test planı | Hazırlanıyor (#1) |
+| Belge | İçerik | Görev |
+|---|---|---|
+| [Teknoloji kararı](docs/teknoloji-karari.md) | Seçilen teknolojiler, gerekçeler, çalışma kuralları | P2-05 |
+| [Kullanıcı senaryoları](docs/kullanici-senaryolari.md) | Personalar, kullanıcı hikâyeleri, temel senaryolar | P2-01 |
+| [Gereksinimler](docs/gereksinimler.md) | Fonksiyonel ve fonksiyonel olmayan gereksinimler, kabul kriterleri | P2-02 |
+| [Veri sözlüğü](docs/veri-sozlugu.md) | Tablolar, alanlar, veri tipleri, kısıtlar, ilişkiler | P2-03 |
+| [ER diyagramı v1](docs/er/er-diyagrami-v1.md) | Kavramsal ve mantıksal ER, kardinaliteler, anahtar adayları | P2-04 |
+| [Test planı](docs/test-plani.md) | Test türleri, veri tabanı kısıt testleri, negatif testler | P2-04 |
+| [Örnek veri](data/seed-taslak/README.md) | Sentetik veri, yükleme sırası, test edilen durumlar | #3 |
 
 ## Çalışma kuralları
 
