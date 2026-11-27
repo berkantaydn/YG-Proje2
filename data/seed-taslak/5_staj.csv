@@ -1,0 +1,9 @@
+staj_id,firma_id,baslik,aciklama,alan,baslangic_tarihi,bitis_tarihi,durum
+1,1,Backend Stajyeri,Web servisleri ve veri tabanı katmanı geliştirme,backend,2027-06-14,2027-08-13,acik
+2,1,Frontend Stajyeri,Kullanıcı arayüzü ekranları geliştirme,frontend,2027-06-14,2027-08-13,acik
+3,2,Bulut Altyapı Stajyeri,Konteyner ve dağıtım süreçlerine destek,devops,2027-07-01,2027-08-30,acik
+4,3,Veri Analizi Stajyeri,Ödeme verilerinden rapor üretme,veri,2027-06-21,2027-09-17,acik
+5,3,Backend Geliştirici Stajyeri,Ödeme API'leri geliştirme,backend,2027-07-05,2027-09-03,acik
+6,4,Oyun Programlama Stajyeri,Unity ile oynanış mekaniği geliştirme,oyun,2027-06-28,2027-08-27,acik
+7,5,Full Stack Stajyeri,Satıcı yönetim paneli geliştirme,fullstack,2027-06-14,2027-09-10,acik
+8,6,Web Geliştirme Stajyeri,Kurumsal web siteleri geliştirme (geçmiş dönem),backend,2026-07-01,2026-08-28,kapali

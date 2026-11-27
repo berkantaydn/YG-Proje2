@@ -1,0 +1,7 @@
+firma_id,ad,sektor_id,sehir,web_sitesi
+1,Örnek Yazılım A.Ş.,1,Ankara,https://www.ornek-yazilim.example
+2,Kuzey Bulut Bilişim Ltd.,1,İstanbul,https://www.kuzey-bulut.example
+3,Pusula Ödeme Teknolojileri A.Ş.,2,İstanbul,https://www.pusula-odeme.example
+4,Liman Oyun Stüdyosu,3,İzmir,https://www.liman-oyun.example
+5,Atlas Pazar E-Ticaret A.Ş.,4,Bursa,https://www.atlas-pazar.example
+6,Karadeniz Kod Atölyesi Ltd.,1,Trabzon,https://www.karadeniz-kod.example

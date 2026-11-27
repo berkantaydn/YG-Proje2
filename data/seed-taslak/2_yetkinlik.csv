@@ -1,0 +1,13 @@
+yetkinlik_id,ad,kategori,aciklama
+1,SQL,Veri tabanı,İlişkisel veri tabanı sorgulama
+2,PHP,Backend,Sunucu taraflı web geliştirme
+3,JavaScript,Frontend,Tarayıcı tarafı programlama
+4,HTML/CSS,Frontend,Web sayfası yapısı ve biçimlendirme
+5,Docker,DevOps,Konteyner tabanlı dağıtım
+6,Git,Araç,Sürüm kontrolü ve ekip içi kod paylaşımı
+7,Python,Backend,Genel amaçlı programlama ve betik yazımı
+8,C#,Oyun,Unity ile oyun programlama
+9,Veri Analizi,Veri,"Veriden özet, rapor ve çıkarım üretme"
+10,REST API,Backend,Web servis tasarımı ve kullanımı
+11,Takım Çalışması,Kişisel,Ekip içinde iş birliği ve iletişim
+12,İngilizce,Kişisel,Teknik belge okuma ve yazışma
