@@ -1,0 +1,10 @@
+ogrenci_id,ogrenci_no,ad,soyad,email,bolum,sinif
+1,S0001,Deniz,Örnek,deniz.ornek@example.com,Yazılım Geliştirme,3
+2,S0002,Ada,Deneme,ada.deneme@example.com,Yazılım Geliştirme,3
+3,S0003,Efe,Kurgu,efe.kurgu@example.com,Bilgisayar Mühendisliği,4
+4,S0004,Elif,Taslak,elif.taslak@example.com,Yazılım Geliştirme,2
+5,S0005,Kaan,Model,kaan.model@example.com,Bilgisayar Mühendisliği,3
+6,S0006,Zeynep,Prototip,zeynep.prototip@example.com,Yönetim Bilişim Sistemleri,2
+7,S0007,Can,Pilot,can.pilot@example.com,Yazılım Geliştirme,1
+8,S0008,Defne,Sentetik,defne.sentetik@example.com,Yazılım Geliştirme,4
+9,S0009,Arda,Demo,arda.demo@example.com,Bilgisayar Mühendisliği,1
